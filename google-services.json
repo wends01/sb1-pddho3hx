@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "421473667987",
+    "project_id": "blackpro-f6207",
+    "storage_bucket": "blackpro-f6207.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:421473667987:android:9b7b7b70a8b316670cb666",
+        "android_client_info": {
+          "package_name": "com.xust.blackpro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "421473667987-lk8atqh5kr3ip0r9u0cr7hivcddo3106.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmDZcrSMMe6TMRWRbQRZMl9Ry9-wn0FD0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "421473667987-lk8atqh5kr3ip0r9u0cr7hivcddo3106.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
