@@ -1,27 +1,46 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/layout/Navbar';
-import Home from './pages/Home';
-import Sports from './pages/Sports';
-import LiveBetting from './pages/LiveBetting';
-import Profile from './pages/Profile';
-import Footer from './components/layout/Footer';
+import { Header } from './components/Header';
+import { Sidebar } from './components/Sidebar';
+import { EventsList } from './components/EventsList';
+import { BetSlip } from './components/BetSlip';
+import { BetHistory } from './components/BetHistory';
+import { EventFilters } from './components/EventFilters';
+import { Notifications } from './components/Notifications';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
+import { motion } from 'framer-motion';
+import { AuthProvider } from './contexts/AuthContext';
 
-function App() {
+const queryClient = new QueryClient();
+
+export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
-      <Navbar />
-      <main className="container mx-auto px-4 py-8">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/sports" element={<Sports />} />
-          <Route path="/live" element={<LiveBetting />} />
-          <Route path="/profile" element={<Profile />} />
-        </Routes>
-      </main>
-      <Footer />
-    </div>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <div className="min-h-screen bg-gray-100">
+            <Notifications />
+            <Header />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="container mx-auto px-4 py-8"
+            >
+              <EventFilters onFilterChange={filters => console.log(filters)} />
+              <div className="flex gap-6">
+                <Sidebar />
+                <main className="flex-1">
+                  <EventsList />
+                </main>
+                <div className="space-y-6">
+                  <BetSlip />
+                  <BetHistory />
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </AuthProvider>
+      </QueryClientProvider>
+    </Provider>
   );
 }
-
-export default App;
